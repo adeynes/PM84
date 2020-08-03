@@ -1,0 +1,6 @@
+error:
+  not-in-game: "&cPlease run this command in-game!"
+  # %function%
+  function-does-not-exist: "&cFunction &b%function% &cdoes not exist!"
+  # %input%
+  not-a-number: "&b%input% &cis not a number!"

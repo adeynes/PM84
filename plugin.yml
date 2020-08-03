@@ -1,0 +1,19 @@
+name: PM84
+main: adeynes\PM84\PM84
+version: 0.0.1
+api: 3.0.0
+load: POSTWORLD
+author: adeynes
+description: Graphing calculator for PocketMine servers
+website: https://github.com/adeynes/PM84
+
+commands:
+  graph:
+    description: "Graph the specified surface"
+    usage: "/graph <function> [radius=50]"
+    permission: pm84.command.graph
+
+permissions:
+  pm84.command.graph:
+    description: "Use /graph"
+    default: op
