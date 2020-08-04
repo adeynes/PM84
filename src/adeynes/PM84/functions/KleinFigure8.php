@@ -5,31 +5,31 @@ namespace adeynes\PM84\functions;
 
 use pocketmine\math\Vector3;
 
-class BulbFlower implements PM84Function
+class KleinFigure8 implements PM84Function
 {
 
     /** @return float[] */
     public function getXDomainBounds(): array
     {
-        return [-2, 2];
+        return [-5, 5];
     }
 
     /** @return float[] */
     public function getYDomainBounds(): array
     {
-        return [-2, 2];
+        return [-1.2, 1.2];
     }
 
     /** @return float[] */
     public function getZDomainBounds(): array
     {
-        return [-2.5, 2.5];
+        return [-5, 5];
     }
 
     /** @return float[] */
     public function getUBounds(): array
     {
-        return [0, pi()];
+        return [0, 2*pi()];
     }
 
     /** @return float[] */
@@ -40,11 +40,12 @@ class BulbFlower implements PM84Function
 
     public function function_(float $u, float $v): Vector3
     {
-        $r = sin(4*$u)**3 + cos(2*$u)**3 + sin(6*$v)**2 + cos(6*$v)**4;
+        $r = 3.5;
+        $s = $r + cos($u/2) * sin($v) - sin($u/2) * sin(2*$v);
         return new Vector3(
-            $r * sin($u) * sin($v),
-            $r * sin($u) * cos($v),
-            $r * cos($u)
+            $s * cos($u),
+            sin($u/2) * sin($v) + cos($u/2) * sin(2*$v),
+            $s * sin($u)
         );
     }
 
