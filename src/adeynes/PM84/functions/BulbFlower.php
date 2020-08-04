@@ -47,4 +47,5 @@ class BulbFlower implements PM84Function
             $r * cos($u)
         );
     }
+    
 }
