@@ -2,3 +2,4 @@ functions:
   bulbflower: adeynes\PM84\functions\BulbFlower
   hyperboloid: adeynes\PM84\functions\Hyperboloid
   figure8: adeynes\PM84\functions\KleinFigure8
+  kuensurface: adeynes\PM84\functions\KuenSurface
