@@ -42,9 +42,9 @@ class BulbFlower implements PM84Function
     {
         $r = sin(4*$u)**3 + cos(2*$u)**3 + sin(6*$v)**2 + cos(6*$v)**4;
         return new Vector3(
+            $r * sin($u) * sin($v),
             $r * sin($u) * cos($v),
-            $r * cos($u),
-            $r * sin($u) * sin($v)
+            $r * cos($u)
         );
     }
 }
