@@ -19,6 +19,8 @@ use pocketmine\utils\Config;
 final class PM84 extends PluginBase
 {
 
+    public const COLORS = [14, 1, 4, 5, 13, 9, 3, 11, 10, 2, 6];
+
     public const DEFAULT_RADIUS = 50;
 
     /** @var PM84 */
@@ -123,8 +125,15 @@ final class PM84 extends PluginBase
                 }
             }
 
+            $total = count($updated_blocks);
+            $count = 0;
+            $color_count = count(self::COLORS);
             foreach ($updated_blocks as $updated_block) {
-                $sender->getLevel()->setBlock($updated_block, Block::get(Block::WOOL));
+                $sender->getLevel()->setBlock(
+                    $updated_block,
+                    Block::get(Block::WOOL, self::COLORS[intval($color_count * $count/$total)])
+                );
+                ++$count;
             }
         }
 
