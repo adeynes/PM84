@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace adeynes\PM84;
 
+use adeynes\PM84\functions\Penis;
 use adeynes\PM84\functions\PM84Function;
 use adeynes\PM84\utils\ConfigPaths;
 use adeynes\PM84\utils\MessageFactory;
@@ -116,6 +117,11 @@ final class PM84 extends PluginBase
                         intval(round($center_y + $scale * $output->getY())),
                         intval(round($center_z + $scale * $output->getZ()))
                     );
+
+                    if ($scaled_output->getY() >= 256) {
+                        var_dump($output);
+                        var_dump(min($function->getUBounds()) + $num_u * $interval_u);
+                    }
 
                     $x = $scaled_output->getX();
                     $y = $scaled_output->getY();
