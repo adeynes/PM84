@@ -56,6 +56,23 @@ class Penis implements PM84Function
     public function function_(float $u, float $v): Vector3
     {
         $vector2 = $this->function2d($u);
+        // If we simply rotate we get an ellipsoid for the testicles, we want two spheres
+        // Right testicle: u ∈ [0, 0.7] ∪ [3pi/2, 2pi[. Center (0.55, -0.1)
+        if ($u <= 0.5 || $u > 3*pi()/2) {
+            return new Vector3(
+                ($vector2->getX() - 0.5) * cos(2*$v) + 0.25,
+                $vector2->getY(),
+                ($vector2->getX() - 0.5) * sin(2*$v) + 0.25
+            );
+        }
+        // Left testicle: u ∈ [pi - 0.7, 3pi/2]. Center (-0.55, -0.1)
+        if ($u >= pi()-0.5 && $u <= 3*pi()/2) {
+            return new Vector3(
+                ($vector2->getX() + 0.5) * cos(2*$v) - 0.25,
+                $vector2->getY(),
+                ($vector2->getX() + 0.5) * sin(2*$v) - 0.25
+            );
+        }
         return new Vector3(
             $vector2->getX() * cos($v),
             $vector2->getY(),
@@ -71,7 +88,6 @@ class Penis implements PM84Function
         } else {
             $sign = 1;
             $increment = $this->precision;
-            // TODO: protection against infinite loop although it shouldn't happen
             while (true) {
                 $next_u = $rounded_u + $sign * $increment;
                 if (isset($this->parametrization2d[strval($next_u)])) {
